@@ -39,7 +39,6 @@ const NewSaleForm: React.FC = () => {
     setError('');
 
     try {
-      // Formatar a data para o formato UTC
       const saleData = {
         ...formData,
         saleDate: new Date(formData.saleDate).toISOString()
@@ -50,7 +49,8 @@ const NewSaleForm: React.FC = () => {
       navigate('/sales');
     } catch (err: any) {
       console.error('Erro ao criar venda:', err);
-      setError(err.response?.data?.message || 'Erro ao criar venda');
+      const errorMessage = err.response?.data?.details || 'Erro ao criar venda';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

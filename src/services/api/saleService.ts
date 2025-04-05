@@ -24,7 +24,7 @@ export const getSales = async (page = 1, pageSize = 10): Promise<PaginatedRespon
 };
 
 export const createSale = async (saleData: SaleFormData): Promise<Sale> => {
-  const response = await api.post<Sale>('/api/v1/sales', saleData);
+  const response = await api.post<Sale>('/api/v1/sales/create', saleData);
   return response.data;
 };
 
